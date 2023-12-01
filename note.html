@@ -1,0 +1,10 @@
+<title>rooir!</title>
+<style>*{color:#eee;background:#111;white-space:pre-wrap;font-family:monospace;-ms-overflow-style:none;scrollbar-width:none;scroll-behavior:smooth;border:none;outline:none}textarea{resize:none;width:100%;height:calc(100% - 2.4em)}textarea::selection{background:#eee;color:#111}@media(prefers-color-scheme:light){*{color:#111;background:#eee}}</style>
+<a href="/">home</a>
+<script>document.addEventListener('DOMContentLoaded',()=>{
+document.body.appendChild(Object.assign(document.createElement('a'),{href:'#',textContent:'export',onclick:()=>exportf()}));
+document.body.appendChild(Object.assign(document.createElement('textarea'),{autofocus:true,id:'n',oninput:()=>s(),placeholder:'write here...'}));
+function s(){localStorage.setItem('yerfnote',document.getElementById('n').value)}
+function l(){var t=localStorage.getItem('yerfnote');t&&(document.getElementById('n').value=t)}window.onload=l;
+function exportf(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([document.getElementById('n').value],{type:'text/plain'}));a.download=`note.txt`;a.click()}
+});</script>
