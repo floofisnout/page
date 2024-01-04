@@ -1,18 +1,32 @@
-<title>rooir!</title>
+<title>yerf</title>
 <meta name='color-scheme' content='dark light'>
-<style>*{white-space:pre-wrap;font-family:monospace;scrollbar-width:none;scroll-behavior:smooth;border:none;outline:none}textarea{width:100%;height:calc(100% - 2.4em)}</style>
-rooir!
-<a href="pass">pass</a>
-<a href="note">note</a>
+Greetings!
 
-Greetings! I'm rooir, a hobbyist developer from down under.
+I'm <a href='https://github.com/rooir'>rooir</a>, a hobbyist microblog developer.
 
-I'm working on building a connected resource platform, so this'll change often.
+"yerf" is a positive greeting in <a href='https://en.wikifur.com/wiki/Foxish_(language)'>foxish</a>
 
-Each page on this project is completely self-contained for easier downloading and archiving.
-Simply pressing Ctrl + S on any page, then selecting type: HTML only, works.
-
-This platform will contain content I write, which some may find offensive.
-As I owe nobody with this project, I won't apologise for my views.
-
-<a href="https://github.com/rooir">code</a> <a href="https://steamcommunity.com/id/fhxr/">steam</a>
+<a href='?pass'>pass</a> - browser based local password generator
+<a href='?note'>note</a> - cookies caching notepad experiment
+<script>
+if (new URLSearchParams(window.location.search).has('note')) {
+	Object.assign(document.body,{innerHTML:'',style:'display:flex;flex-direction:column;height:100%;margin:0'});
+	document.body.appendChild(Object.assign(document.createElement('a'),{href:'#',textContent:'export',onclick:()=>xf()}));
+	document.body.appendChild(Object.assign(document.createElement('textarea'),{autofocus:true,id:'n',oninput:()=>s(),placeholder:'write here...',style:'background:none;flex:1;resize:none'}));
+	function s(){localStorage.setItem('note',document.getElementById('n').value)}
+	window.onload=function(){var t=localStorage.getItem('note');t&&(document.getElementById('n').value=t)};
+	const xf=()=>(a=>(a.href=URL.createObjectURL(new Blob([document.getElementById('n').value])),a.download='.txt',a.click()))(document.createElement('a'));
+}
+if (new URLSearchParams(window.location.search).has('pass')) {
+	document.querySelector('body').innerHTML='';
+	document.body.appendChild(Object.assign(document.createElement('a'),{href:'javascript:location.reload()'},{textContent:'generate'}));
+	Array.from(document.querySelectorAll('div')).forEach(e=>e.remove());
+	for(let l=0;l<50;l++){const r=Object.assign(document.createElement('div'));
+		for(let i=0;i<16;i++){let n=Math.floor(Math.random()*69);r.append('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@#$%&+='.substring(n,n+1))}
+		document.querySelector('body').appendChild(r)
+		}}
+</script>
+<style>
+	*{white-space:pre-wrap;font-family:monospace;scrollbar-width:none;scroll-behavior:smooth;border:none;outline:none}
+	a{color:inherit}
+</style>
